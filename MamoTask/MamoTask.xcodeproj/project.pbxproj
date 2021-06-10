@@ -68,6 +68,8 @@
 		9BE48B392672B9BF00AFA2D7 /* FrequentListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B352672B9BF00AFA2D7 /* FrequentListDTO.swift */; };
 		9BE48B3A2672B9BF00AFA2D7 /* FrequentReciverDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B362672B9BF00AFA2D7 /* FrequentReciverDTO.swift */; };
 		9BE48B3E2672B9F900AFA2D7 /* ContactRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B3D2672B9F900AFA2D7 /* ContactRepository.swift */; };
+		9BE48B412672BB3000AFA2D7 /* ContactPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B3F2672BB3000AFA2D7 /* ContactPresentationModel.swift */; };
+		9BE48B422672BB3000AFA2D7 /* ContactsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B402672BB3000AFA2D7 /* ContactsListInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +155,8 @@
 		9BE48B352672B9BF00AFA2D7 /* FrequentListDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequentListDTO.swift; sourceTree = "<group>"; };
 		9BE48B362672B9BF00AFA2D7 /* FrequentReciverDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequentReciverDTO.swift; sourceTree = "<group>"; };
 		9BE48B3D2672B9F900AFA2D7 /* ContactRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactRepository.swift; sourceTree = "<group>"; };
+		9BE48B3F2672BB3000AFA2D7 /* ContactPresentationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPresentationModel.swift; sourceTree = "<group>"; };
+		9BE48B402672BB3000AFA2D7 /* ContactsListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +286,8 @@
 		9BE48AA92672B18200AFA2D7 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				9BE48B3F2672BB3000AFA2D7 /* ContactPresentationModel.swift */,
+				9BE48B402672BB3000AFA2D7 /* ContactsListInteractor.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -575,6 +581,7 @@
 				9BE48B112672B89300AFA2D7 /* CGFloat+Extensions.swift in Sources */,
 				9BE48B082672B89300AFA2D7 /* UITableView+Extensions.swift in Sources */,
 				9BE48A7A2672909800AFA2D7 /* ViewController.swift in Sources */,
+				9BE48B412672BB3000AFA2D7 /* ContactPresentationModel.swift in Sources */,
 				9BE48B1E2672B89300AFA2D7 /* Codable+Extensions.swift in Sources */,
 				9BE48A762672909800AFA2D7 /* AppDelegate.swift in Sources */,
 				9BE48B0A2672B89300AFA2D7 /* Timer+Extensions.swift in Sources */,
@@ -611,6 +618,7 @@
 				9BE48B172672B89300AFA2D7 /* UIDevice+Extensions.swift in Sources */,
 				9BE48B1A2672B89300AFA2D7 /* UIImage+Extensions.swift in Sources */,
 				9BE48B1C2672B89300AFA2D7 /* UITextField+Extensions.swift in Sources */,
+				9BE48B422672BB3000AFA2D7 /* ContactsListInteractor.swift in Sources */,
 				9BE48AD62672B84600AFA2D7 /* ApiClient.swift in Sources */,
 				9BE48B022672B89300AFA2D7 /* Int+Extensions.swift in Sources */,
 			);
