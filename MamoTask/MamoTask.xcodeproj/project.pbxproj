@@ -87,6 +87,7 @@
 		9BE48B702672BFFA00AFA2D7 /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B6F2672BFFA00AFA2D7 /* ContactDetailsViewController.swift */; };
 		9BE48B722672C00D00AFA2D7 /* ContactDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B712672C00D00AFA2D7 /* ContactDetailsCoordinator.swift */; };
 		9BE48B742672C01800AFA2D7 /* ContactDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B732672C01800AFA2D7 /* ContactDetailsBuilder.swift */; };
+		9BE48B772672C1FF00AFA2D7 /* AlamofireNetworkActivityLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 9BE48B762672C1FF00AFA2D7 /* AlamofireNetworkActivityLogger */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +199,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE48B772672C1FF00AFA2D7 /* AlamofireNetworkActivityLogger in Frameworks */,
 				9BE48AAE2672B3E800AFA2D7 /* Moya in Frameworks */,
 				9BE48AB12672B42300AFA2D7 /* SwiftyContacts in Frameworks */,
 			);
@@ -609,6 +611,7 @@
 			packageProductDependencies = (
 				9BE48AAD2672B3E800AFA2D7 /* Moya */,
 				9BE48AB02672B42300AFA2D7 /* SwiftyContacts */,
+				9BE48B762672C1FF00AFA2D7 /* AlamofireNetworkActivityLogger */,
 			);
 			productName = MamoTask;
 			productReference = 9BE48A722672909800AFA2D7 /* MamoTask.app */;
@@ -684,6 +687,7 @@
 			packageReferences = (
 				9BE48AAC2672B3E800AFA2D7 /* XCRemoteSwiftPackageReference "Moya" */,
 				9BE48AAF2672B42300AFA2D7 /* XCRemoteSwiftPackageReference "SwiftyContacts" */,
+				9BE48B752672C1FF00AFA2D7 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */,
 			);
 			productRefGroup = 9BE48A732672909800AFA2D7 /* Products */;
 			projectDirPath = "";
@@ -1153,6 +1157,14 @@
 				minimumVersion = 3.0.16;
 			};
 		};
+		9BE48B752672C1FF00AFA2D7 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/konkab/AlamofireNetworkActivityLogger.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1165,6 +1177,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9BE48AAF2672B42300AFA2D7 /* XCRemoteSwiftPackageReference "SwiftyContacts" */;
 			productName = SwiftyContacts;
+		};
+		9BE48B762672C1FF00AFA2D7 /* AlamofireNetworkActivityLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9BE48B752672C1FF00AFA2D7 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */;
+			productName = AlamofireNetworkActivityLogger;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
