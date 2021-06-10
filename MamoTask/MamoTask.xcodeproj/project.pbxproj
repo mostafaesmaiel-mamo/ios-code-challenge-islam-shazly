@@ -63,6 +63,11 @@
 		9BE48B2E2672B8F300AFA2D7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B2C2672B8F300AFA2D7 /* Router.swift */; };
 		9BE48B2F2672B8F300AFA2D7 /* RouterImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B2D2672B8F300AFA2D7 /* RouterImplementation.swift */; };
 		9BE48B312672B91400AFA2D7 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B302672B91400AFA2D7 /* Builder.swift */; };
+		9BE48B372672B9BF00AFA2D7 /* MamoAccountsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B332672B9BF00AFA2D7 /* MamoAccountsDTO.swift */; };
+		9BE48B382672B9BF00AFA2D7 /* MamoAccountDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B342672B9BF00AFA2D7 /* MamoAccountDTO.swift */; };
+		9BE48B392672B9BF00AFA2D7 /* FrequentListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B352672B9BF00AFA2D7 /* FrequentListDTO.swift */; };
+		9BE48B3A2672B9BF00AFA2D7 /* FrequentReciverDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B362672B9BF00AFA2D7 /* FrequentReciverDTO.swift */; };
+		9BE48B3E2672B9F900AFA2D7 /* ContactRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B3D2672B9F900AFA2D7 /* ContactRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +148,11 @@
 		9BE48B2C2672B8F300AFA2D7 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		9BE48B2D2672B8F300AFA2D7 /* RouterImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterImplementation.swift; sourceTree = "<group>"; };
 		9BE48B302672B91400AFA2D7 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		9BE48B332672B9BF00AFA2D7 /* MamoAccountsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MamoAccountsDTO.swift; sourceTree = "<group>"; };
+		9BE48B342672B9BF00AFA2D7 /* MamoAccountDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MamoAccountDTO.swift; sourceTree = "<group>"; };
+		9BE48B352672B9BF00AFA2D7 /* FrequentListDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequentListDTO.swift; sourceTree = "<group>"; };
+		9BE48B362672B9BF00AFA2D7 /* FrequentReciverDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequentReciverDTO.swift; sourceTree = "<group>"; };
+		9BE48B3D2672B9F900AFA2D7 /* ContactRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +260,7 @@
 		9BE48AA72672B14700AFA2D7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9BE48B322672B97800AFA2D7 /* CustomComponents */,
 				9BE48AC02672B67A00AFA2D7 /* Constants */,
 				9BE48ABF2672B65800AFA2D7 /* CustomComponents  */,
 				9BE48ABE2672B64E00AFA2D7 /* Router */,
@@ -262,6 +273,8 @@
 		9BE48AA82672B16400AFA2D7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				9BE48B3C2672B9E600AFA2D7 /* Repository */,
+				9BE48B3B2672B9D600AFA2D7 /* Entities */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -380,6 +393,32 @@
 				9BE48B002672B89300AFA2D7 /* URL+Extensions.swift */,
 			);
 			path = MamoUtility;
+			sourceTree = "<group>";
+		};
+		9BE48B322672B97800AFA2D7 /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomComponents;
+			sourceTree = "<group>";
+		};
+		9BE48B3B2672B9D600AFA2D7 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				9BE48B352672B9BF00AFA2D7 /* FrequentListDTO.swift */,
+				9BE48B362672B9BF00AFA2D7 /* FrequentReciverDTO.swift */,
+				9BE48B342672B9BF00AFA2D7 /* MamoAccountDTO.swift */,
+				9BE48B332672B9BF00AFA2D7 /* MamoAccountsDTO.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		9BE48B3C2672B9E600AFA2D7 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				9BE48B3D2672B9F900AFA2D7 /* ContactRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -527,6 +566,7 @@
 				9BE48B262672B89300AFA2D7 /* URL+Extensions.swift in Sources */,
 				9BE48B2F2672B8F300AFA2D7 /* RouterImplementation.swift in Sources */,
 				9BE48B092672B89300AFA2D7 /* Bool+Extensions.swift in Sources */,
+				9BE48B372672B9BF00AFA2D7 /* MamoAccountsDTO.swift in Sources */,
 				9BE48B0D2672B89300AFA2D7 /* DateFormatter+Extensions.swift in Sources */,
 				9BE48AD92672B84600AFA2D7 /* NetworkConstants.swift in Sources */,
 				9BE48B042672B89300AFA2D7 /* Identifiable.swift in Sources */,
@@ -538,11 +578,13 @@
 				9BE48B1E2672B89300AFA2D7 /* Codable+Extensions.swift in Sources */,
 				9BE48A762672909800AFA2D7 /* AppDelegate.swift in Sources */,
 				9BE48B0A2672B89300AFA2D7 /* Timer+Extensions.swift in Sources */,
+				9BE48B382672B9BF00AFA2D7 /* MamoAccountDTO.swift in Sources */,
 				9BE48B102672B89300AFA2D7 /* UIAlertController+Extensions.swift in Sources */,
 				9BE48B1D2672B89300AFA2D7 /* Dictionary+Extensions.swift in Sources */,
 				9BE48B132672B89300AFA2D7 /* UIView+Extensions.swift in Sources */,
 				9BE48AC22672B68B00AFA2D7 /* StoryBoardConstants.swift in Sources */,
 				9BE48B072672B89300AFA2D7 /* Bundle+Extensions.swift in Sources */,
+				9BE48B392672B9BF00AFA2D7 /* FrequentListDTO.swift in Sources */,
 				9BE48B312672B91400AFA2D7 /* Builder.swift in Sources */,
 				9BE48AD72672B84600AFA2D7 /* BackendError.swift in Sources */,
 				9BE48AD52672B84600AFA2D7 /* NetworkLayer.swift in Sources */,
@@ -553,10 +595,12 @@
 				9BE48B192672B89300AFA2D7 /* Injectable.swift in Sources */,
 				9BE48B202672B89300AFA2D7 /* StoryboardInitializable.swift in Sources */,
 				9BE48A782672909800AFA2D7 /* SceneDelegate.swift in Sources */,
+				9BE48B3E2672B9F900AFA2D7 /* ContactRepository.swift in Sources */,
 				9BE48B0B2672B89300AFA2D7 /* Double+Extensions.swift in Sources */,
 				9BE48B122672B89300AFA2D7 /* Bunble+Extensions.swift in Sources */,
 				9BE48B212672B89300AFA2D7 /* UIViewController+Extensions.swift in Sources */,
 				9BE48B1B2672B89300AFA2D7 /* UIWindow+Extensions.swift in Sources */,
+				9BE48B3A2672B9BF00AFA2D7 /* FrequentReciverDTO.swift in Sources */,
 				9BE48B052672B89300AFA2D7 /* UnderLine+Extensions.swift in Sources */,
 				9BE48AD82672B84600AFA2D7 /* Endpoints.swift in Sources */,
 				9BE48B0F2672B89300AFA2D7 /* String+Extensions.swift in Sources */,
