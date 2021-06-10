@@ -51,6 +51,7 @@
 		9BE48A932672909B00AFA2D7 /* MamoTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MamoTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE48A972672909B00AFA2D7 /* MamoTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MamoTaskUITests.swift; sourceTree = "<group>"; };
 		9BE48A992672909B00AFA2D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BE48ABB2672B55200AFA2D7 /* MyLibrary */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MyLibrary; path = NetworkLayer/MyLibrary; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 		9BE48A692672909800AFA2D7 = {
 			isa = PBXGroup;
 			children = (
+				9BE48ABB2672B55200AFA2D7 /* MyLibrary */,
 				9BE48A742672909800AFA2D7 /* MamoTask */,
 				9BE48A8B2672909B00AFA2D7 /* MamoTaskTests */,
 				9BE48A962672909B00AFA2D7 /* MamoTaskUITests */,
