@@ -1,0 +1,34 @@
+//
+//  UIApplication+Extensions.swift
+//  
+//
+
+//
+
+// swiftlint:disable all
+
+import UIKit
+
+extension UIApplication {
+
+    public func topViewController(from baseVC: UIViewController? = UIApplication.shared.windows.first?.rootViewController)
+                                  -> UIViewController? {
+        guard let baseVC = baseVC else { return nil }
+
+        if let nav = baseVC as? UINavigationController {
+            return topViewController(from: nav.visibleViewController)
+        } else if let tab = baseVC as? UITabBarController, let selected = tab.selectedViewController {
+            return topViewController(from: selected)
+        } else if let presented = baseVC.presentedViewController {
+            return topViewController(from: presented)
+        }
+        return baseVC
+    }
+
+}
+
+extension UIApplication {
+    public static func delegate<T: UIApplicationDelegate>(_ type: T.Type) -> T? {
+        return UIApplication.shared.delegate as? T
+    }
+}
