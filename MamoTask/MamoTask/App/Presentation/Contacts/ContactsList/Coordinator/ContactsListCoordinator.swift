@@ -40,6 +40,7 @@ final class ContactsListCoordinator: BaseCoordinator {
     }
     
     func navigateToContactDetailsDetails(contact: ContactViewStateModel) {
-
+        let contactDetailsCoordinator = ContactDetailsCoordinator(router: router, builder: ContactDetailsBuilder(contact: contact))
+        coordinate(to: contactDetailsCoordinator)
     }
 }
