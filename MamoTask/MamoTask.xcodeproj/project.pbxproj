@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		9BE48A822672909B00AFA2D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE48A802672909B00AFA2D7 /* LaunchScreen.storyboard */; };
 		9BE48A8D2672909B00AFA2D7 /* MamoTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48A8C2672909B00AFA2D7 /* MamoTaskTests.swift */; };
 		9BE48A982672909B00AFA2D7 /* MamoTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48A972672909B00AFA2D7 /* MamoTaskUITests.swift */; };
+		9BE48AAE2672B3E800AFA2D7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 9BE48AAD2672B3E800AFA2D7 /* Moya */; };
+		9BE48AB12672B42300AFA2D7 /* SwiftyContacts in Frameworks */ = {isa = PBXBuildFile; productRef = 9BE48AB02672B42300AFA2D7 /* SwiftyContacts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE48AAE2672B3E800AFA2D7 /* Moya in Frameworks */,
+				9BE48AB12672B42300AFA2D7 /* SwiftyContacts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,8 +103,9 @@
 		9BE48A742672909800AFA2D7 /* MamoTask */ = {
 			isa = PBXGroup;
 			children = (
-				9BE48A752672909800AFA2D7 /* AppDelegate.swift */,
-				9BE48A772672909800AFA2D7 /* SceneDelegate.swift */,
+				9BE48AA52672B12A00AFA2D7 /* Delegate */,
+				9BE48AA62672B13E00AFA2D7 /* App */,
+				9BE48AA72672B14700AFA2D7 /* Common */,
 				9BE48A792672909800AFA2D7 /* ViewController.swift */,
 				9BE48A7B2672909800AFA2D7 /* Main.storyboard */,
 				9BE48A7E2672909B00AFA2D7 /* Assets.xcassets */,
@@ -128,6 +133,53 @@
 			path = MamoTaskUITests;
 			sourceTree = "<group>";
 		};
+		9BE48AA52672B12A00AFA2D7 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				9BE48A752672909800AFA2D7 /* AppDelegate.swift */,
+				9BE48A772672909800AFA2D7 /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		9BE48AA62672B13E00AFA2D7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9BE48AA82672B16400AFA2D7 /* Data */,
+				9BE48AA92672B18200AFA2D7 /* Domain */,
+				9BE48AAA2672B18700AFA2D7 /* Presentation */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9BE48AA72672B14700AFA2D7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		9BE48AA82672B16400AFA2D7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9BE48AA92672B18200AFA2D7 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		9BE48AAA2672B18700AFA2D7 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,6 +196,10 @@
 			dependencies = (
 			);
 			name = MamoTask;
+			packageProductDependencies = (
+				9BE48AAD2672B3E800AFA2D7 /* Moya */,
+				9BE48AB02672B42300AFA2D7 /* SwiftyContacts */,
+			);
 			productName = MamoTask;
 			productReference = 9BE48A722672909800AFA2D7 /* MamoTask.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +271,10 @@
 				Base,
 			);
 			mainGroup = 9BE48A692672909800AFA2D7;
+			packageReferences = (
+				9BE48AAC2672B3E800AFA2D7 /* XCRemoteSwiftPackageReference "Moya" */,
+				9BE48AAF2672B42300AFA2D7 /* XCRemoteSwiftPackageReference "SwiftyContacts" */,
+			);
 			productRefGroup = 9BE48A732672909800AFA2D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -439,6 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8FQ6HDXU68;
 				INFOPLIST_FILE = MamoTask/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,7 +507,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mamo.MamoTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -458,6 +519,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8FQ6HDXU68;
 				INFOPLIST_FILE = MamoTask/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,7 +527,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mamo.MamoTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -593,6 +655,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9BE48AAC2672B3E800AFA2D7 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.1;
+			};
+		};
+		9BE48AAF2672B42300AFA2D7 /* XCRemoteSwiftPackageReference "SwiftyContacts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/satishbabariya/SwiftyContacts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.16;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9BE48AAD2672B3E800AFA2D7 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9BE48AAC2672B3E800AFA2D7 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		9BE48AB02672B42300AFA2D7 /* SwiftyContacts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9BE48AAF2672B42300AFA2D7 /* XCRemoteSwiftPackageReference "SwiftyContacts" */;
+			productName = SwiftyContacts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9BE48A6A2672909800AFA2D7 /* Project object */;
 }
