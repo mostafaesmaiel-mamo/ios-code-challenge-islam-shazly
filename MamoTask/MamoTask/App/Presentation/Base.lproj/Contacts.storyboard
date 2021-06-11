@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ggg-d4-ZgM">
-                                <rect key="frame" x="0.0" y="44" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="742"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rli-SV-1X8">
                                     <size key="itemSize" width="128" height="128"/>
@@ -72,7 +72,7 @@
                                 </collectionReusableView>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1w-TR-88a" customClass="NextButton" customModule="Mamo" customModuleProvider="target">
-                                <rect key="frame" x="24" y="774" width="366" height="56"/>
+                                <rect key="frame" x="24" y="798" width="366" height="56"/>
                                 <color key="backgroundColor" name="lightGray"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="rit-yA-OCb"/>
@@ -90,7 +90,7 @@
                         <constraints>
                             <constraint firstItem="Ggg-d4-ZgM" firstAttribute="leading" secondItem="GMb-cb-5Lo" secondAttribute="leading" id="2VP-Ev-GQ6"/>
                             <constraint firstItem="GMb-cb-5Lo" firstAttribute="trailing" secondItem="Ggg-d4-ZgM" secondAttribute="trailing" id="7nu-eK-WVc"/>
-                            <constraint firstItem="GMb-cb-5Lo" firstAttribute="bottom" secondItem="M1w-TR-88a" secondAttribute="bottom" constant="32" id="OK7-V7-yLe"/>
+                            <constraint firstItem="GMb-cb-5Lo" firstAttribute="bottom" secondItem="M1w-TR-88a" secondAttribute="bottom" constant="8" id="OK7-V7-yLe"/>
                             <constraint firstItem="GMb-cb-5Lo" firstAttribute="trailing" secondItem="M1w-TR-88a" secondAttribute="trailing" constant="24" id="OYA-Oh-qzR"/>
                             <constraint firstItem="M1w-TR-88a" firstAttribute="top" secondItem="Ggg-d4-ZgM" secondAttribute="bottom" constant="12" id="XTC-Sn-HJ3"/>
                             <constraint firstItem="enX-cS-3bK" firstAttribute="centerY" secondItem="GMb-cb-5Lo" secondAttribute="centerY" id="YCe-a9-neP"/>

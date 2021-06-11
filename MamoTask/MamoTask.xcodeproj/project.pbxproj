@@ -88,6 +88,12 @@
 		9BE48B722672C00D00AFA2D7 /* ContactDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B712672C00D00AFA2D7 /* ContactDetailsCoordinator.swift */; };
 		9BE48B742672C01800AFA2D7 /* ContactDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B732672C01800AFA2D7 /* ContactDetailsBuilder.swift */; };
 		9BE48B772672C1FF00AFA2D7 /* AlamofireNetworkActivityLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 9BE48B762672C1FF00AFA2D7 /* AlamofireNetworkActivityLogger */; };
+		9BE48B7A2672CF5900AFA2D7 /* APIClientFrequentsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B792672CF5900AFA2D7 /* APIClientFrequentsMock.swift */; };
+		9BE48B7D2672D15800AFA2D7 /* frequents.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BE48B7C2672D15800AFA2D7 /* frequents.json */; };
+		9BE48B7F2672D2F400AFA2D7 /* LocalJsonReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B7E2672D2F300AFA2D7 /* LocalJsonReader.swift */; };
+		9BE48B822672DF4300AFA2D7 /* mamoAccounts.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BE48B812672DF4300AFA2D7 /* mamoAccounts.json */; };
+		9BE48B872672E06500AFA2D7 /* ContactsListRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B862672E06500AFA2D7 /* ContactsListRepositoryTest.swift */; };
+		9BE48B8A2672EF8700AFA2D7 /* ContactsListInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B892672EF8700AFA2D7 /* ContactsListInteractorTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +198,12 @@
 		9BE48B6F2672BFFA00AFA2D7 /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
 		9BE48B712672C00D00AFA2D7 /* ContactDetailsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailsCoordinator.swift; sourceTree = "<group>"; };
 		9BE48B732672C01800AFA2D7 /* ContactDetailsBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailsBuilder.swift; sourceTree = "<group>"; };
+		9BE48B792672CF5900AFA2D7 /* APIClientFrequentsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientFrequentsMock.swift; sourceTree = "<group>"; };
+		9BE48B7C2672D15800AFA2D7 /* frequents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequents.json; sourceTree = "<group>"; };
+		9BE48B7E2672D2F300AFA2D7 /* LocalJsonReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalJsonReader.swift; sourceTree = "<group>"; };
+		9BE48B812672DF4300AFA2D7 /* mamoAccounts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mamoAccounts.json; sourceTree = "<group>"; };
+		9BE48B862672E06500AFA2D7 /* ContactsListRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListRepositoryTest.swift; sourceTree = "<group>"; };
+		9BE48B892672EF8700AFA2D7 /* ContactsListInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListInteractorTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +273,10 @@
 		9BE48A8B2672909B00AFA2D7 /* MamoTaskTests */ = {
 			isa = PBXGroup;
 			children = (
+				9BE48B882672EF6200AFA2D7 /* Interactor */,
+				9BE48B852672DFCE00AFA2D7 /* Repoository */,
+				9BE48B7B2672D13100AFA2D7 /* Resources */,
+				9BE48B782672CAFC00AFA2D7 /* Mockes */,
 				9BE48A8C2672909B00AFA2D7 /* MamoTaskTests.swift */,
 				9BE48A8E2672909B00AFA2D7 /* Info.plist */,
 			);
@@ -298,6 +314,7 @@
 		9BE48AA72672B14700AFA2D7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9BE48B802672D30C00AFA2D7 /* Helpers */,
 				9BE48B322672B97800AFA2D7 /* CustomComponents */,
 				9BE48AC02672B67A00AFA2D7 /* Constants */,
 				9BE48ABF2672B65800AFA2D7 /* CustomComponents  */,
@@ -592,6 +609,47 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
+		9BE48B782672CAFC00AFA2D7 /* Mockes */ = {
+			isa = PBXGroup;
+			children = (
+				9BE48B792672CF5900AFA2D7 /* APIClientFrequentsMock.swift */,
+			);
+			path = Mockes;
+			sourceTree = "<group>";
+		};
+		9BE48B7B2672D13100AFA2D7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9BE48B812672DF4300AFA2D7 /* mamoAccounts.json */,
+				9BE48B7C2672D15800AFA2D7 /* frequents.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9BE48B802672D30C00AFA2D7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9BE48B7E2672D2F300AFA2D7 /* LocalJsonReader.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9BE48B852672DFCE00AFA2D7 /* Repoository */ = {
+			isa = PBXGroup;
+			children = (
+				9BE48B862672E06500AFA2D7 /* ContactsListRepositoryTest.swift */,
+			);
+			path = Repoository;
+			sourceTree = "<group>";
+		};
+		9BE48B882672EF6200AFA2D7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9BE48B892672EF8700AFA2D7 /* ContactsListInteractorTest.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -718,6 +776,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE48B822672DF4300AFA2D7 /* mamoAccounts.json in Resources */,
+				9BE48B7D2672D15800AFA2D7 /* frequents.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,6 +865,7 @@
 				9BE48AD62672B84600AFA2D7 /* ApiClient.swift in Sources */,
 				9BE48B4E2672BD6600AFA2D7 /* ContactsListViewModel.swift in Sources */,
 				9BE48B022672B89300AFA2D7 /* Int+Extensions.swift in Sources */,
+				9BE48B7F2672D2F400AFA2D7 /* LocalJsonReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,6 +873,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE48B7A2672CF5900AFA2D7 /* APIClientFrequentsMock.swift in Sources */,
+				9BE48B872672E06500AFA2D7 /* ContactsListRepositoryTest.swift in Sources */,
+				9BE48B8A2672EF8700AFA2D7 /* ContactsListInteractorTest.swift in Sources */,
 				9BE48A8D2672909B00AFA2D7 /* MamoTaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,4 +14,9 @@ extension C {
             return self.rawValue.capitalized
         }
     }
+    
+        enum UnitTesting {
+            static let frequent = "frequents"
+            static let mamoAccounts = "mamoAccounts"
+        }
 }

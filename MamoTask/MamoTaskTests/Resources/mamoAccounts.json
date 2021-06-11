@@ -1,0 +1,66 @@
+{
+    "mamoAccounts": [
+        {
+            "id": "32",
+            "key": "email",
+            "value": "Clara.J.Hamel@yahoo.com",
+            "publicName": "Clara J."
+        },
+        {
+            "id": "42",
+            "key": "phone",
+            "value": "+971545558080",
+            "publicName": "Lisa F."
+        },
+        {
+            "id": "45",
+            "key": "email",
+            "value": "Paul.Hamilton@gmail.com",
+            "publicName": "Paul H."
+        },
+        {
+            "id": "60",
+            "key": "phone",
+            "value": "+971502090761"
+        },
+        {
+            "id": "80",
+            "key": "email",
+            "value": "Tanya.bell@gmail.com"
+        },
+        {
+            "id": "82",
+            "key": "phone",
+            "value": "+971502060981"
+        },
+        {
+            "id": "85",
+            "key": "email",
+            "value": "Yolandacaldwell@gmail.com",
+            "publicName": "Yolanda .C"
+        },
+        {
+            "id": "90",
+            "key": "phone",
+            "value": "+971545554223",
+            "publicName": "Grady .F"
+        },
+        {
+            "id": "93",
+            "key": "email",
+            "value": "Terrellgraham@gmail.com",
+            "publicName": "Terrell .G"
+        },
+        {
+            "id": "95",
+            "key": "email",
+            "value": "Claramontgomery@gmail.com"
+        },
+        {
+            "id": "100",
+            "key": "email",
+            "value": "Grady.f@gmail.com",
+            "publicName": "Gardy .F"
+        }
+    ]
+}
