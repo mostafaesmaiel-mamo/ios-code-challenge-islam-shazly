@@ -16,14 +16,6 @@ final class FrequentView: UIView {
     @IBOutlet weak private var nameLabel: UILabel!
     @IBOutlet weak private var containerView: UIView!
     
-    // MARK: - Properties
-    
-    var isSelected: Bool = false {
-        didSet {
-            
-        }
-    }
-    
     // MARK: - View Life Cycle
     
     override func awakeFromNib() {

@@ -9,7 +9,7 @@ import Foundation
 protocol ContactsListRepository {
     
     func fetchFrequentReceivers(completion: @escaping APIResultHandler<FrequentListDTO>)
-    func fetchSearch(emails:[String], phones: [String], completion: @escaping APIResultHandler<MamoAccountsDTO>)
+    func fetchSearch(emails:[String], phones: [String], completion: @escaping APIResultHandler<MamoAccountListDTO>)
 }
 
 final class ContactsListRepositoryImplementation: ContactsListRepository {
@@ -35,7 +35,7 @@ final class ContactsListRepositoryImplementation: ContactsListRepository {
                     let frequent = try FrequentListDTO.decode(from: response)
                     completion(.success(frequent))
                 } catch {
-                    completion(.failure(BackendError(error: error)))
+                    completion(.failure(error))
                 }
                 
             case .failure(let error):
@@ -44,17 +44,17 @@ final class ContactsListRepositoryImplementation: ContactsListRepository {
         }
     }
     
-    func fetchSearch(emails: [String], phones: [String], completion: @escaping APIResultHandler<MamoAccountsDTO>) {
+    func fetchSearch(emails: [String], phones: [String], completion: @escaping APIResultHandler<MamoAccountListDTO>) {
         
         self.apiClient.execute(request: .searchAccounts(emails: emails, phones: phones)) { result in
             
             switch result {
             case let .success(response):
                 do {
-                    let accounts = try MamoAccountsDTO.decode(from: response)
+                    let accounts = try MamoAccountListDTO.decode(from: response)
                     completion(.success(accounts))
                 } catch {
-                    completion(.failure(BackendError(error: error)))
+                    completion(.failure(error))
                 }
                 
             case .failure(let error):

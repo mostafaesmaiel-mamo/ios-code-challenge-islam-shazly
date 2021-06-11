@@ -13,7 +13,7 @@ struct ContactsViewStateModel {
     var mamoAccounts: [ContactViewStateModel]
     var contacts: [ContactViewStateModel]
     
-    mutating func convertContactPresentationToViewStateModel(presentationModel: ContactsPresentationModel) {
+    mutating func convertContactPresentationToViewStateModel(presentationModel: ContactListPresentationModel) {
         frequentsReciver = presentationModel.frequentRecivers.map({ frequentPresentation in
             ContactViewStateModel(id: frequentPresentation.id,
                                   key: frequentPresentation.key, value: frequentPresentation.value,

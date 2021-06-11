@@ -20,15 +20,7 @@ extension Endpoints: TargetType {
     
     public var baseURL: URL {
         
-        switch self {
-        
-        default:
-            #if DEBUG
-            return URL(string: C.staging)!
-            #else
-            return URL(string: C.production)!
-            #endif
-        }
+        return URL(string: C.baseURL)!
     }
     
     public var path: String {
@@ -64,14 +56,11 @@ extension Endpoints: TargetType {
     }
 
     public var parameterEncoding: ParameterEncoding {
-        if self.method == .get {
+         if self.method == .post {
+            return JSONEncoding.default
+         } else {
             return URLEncoding.queryString
-        } else if self.method == .post {
-            return JSONEncoding.default
-        } else if self.method == .patch {
-            return JSONEncoding.default
         }
-        return URLEncoding.default
     }
     
     public var task: Task {
@@ -80,8 +69,7 @@ extension Endpoints: TargetType {
     
     public var headers: [String: String]? {
         
-        return ["Content-Type": "application/json",
-                "accept-language": ApiClientImplementation.language]
+        return ["Content-Type": "application/json"]
     }
     
     public var sampleData: Data { return Data() }

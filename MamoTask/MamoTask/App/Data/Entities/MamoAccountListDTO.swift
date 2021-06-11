@@ -6,7 +6,7 @@
 
 import Foundation
 
-struct  MamoAccountsDTO: Codable {
+struct MamoAccountListDTO: Codable {
     
     var mamoAccounts: [MamoAccountDTO]
 }

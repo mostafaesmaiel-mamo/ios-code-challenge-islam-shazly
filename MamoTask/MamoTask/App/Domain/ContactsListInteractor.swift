@@ -17,7 +17,7 @@ enum ContactPermissionState {
 
 protocol ContactsListInteractor {
     
-    var contactsPresnetatoinLogic: Published<ContactsPresentationModel>.Publisher { get }
+    var contactsPresnetatoinLogic: Published<ContactListPresentationModel>.Publisher { get }
     var contactPermissionLogic: Published<ContactPermissionState>.Publisher { get }
     
     func fetchContacts()
@@ -29,7 +29,7 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
     
     // MARK: - Properties
     
-    var contactsPresnetatoinLogic: Published<ContactsPresentationModel>.Publisher { $contactsPresnetatoinList }
+    var contactsPresnetatoinLogic: Published<ContactListPresentationModel>.Publisher { $contactsPresnetatoinList }
     var contactPermissionLogic: Published<ContactPermissionState>.Publisher { $contactPermissionState }
     
     private var repository: ContactsListRepository!
@@ -37,7 +37,7 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
     
     
     @Published private(set) var contactPermissionState = ContactPermissionState.none
-    @Published private(set) var contactsPresnetatoinList: ContactsPresentationModel = ContactsPresentationModel(frequentRecivers: [ContactPresentationModel](), mamoAccounts: [ContactPresentationModel](), contacts: [ContactPresentationModel]())
+    @Published private(set) var contactsPresnetatoinList: ContactListPresentationModel = ContactListPresentationModel(frequentRecivers: [ContactPresentationModel](), mamoAccounts: [ContactPresentationModel](), contacts: [ContactPresentationModel]())
     
 
     init(repository: ContactsListRepository) {
@@ -50,7 +50,7 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
     
     private func fetchMamoAccounts(emails: [String], phones: [String]) {
 
-        var mamoContanctsListDTO: MamoAccountsDTO!
+        var mamoContanctsListDTO: MamoAccountListDTO!
         var frequentsListDTO: FrequentListDTO!
         var mamoAccountDic = [String: ContactPresentationModel]()
         
@@ -130,7 +130,7 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
                 contactsPresentatioinModel.append(contact)
             }
             
-            self.contactsPresnetatoinList = ContactsPresentationModel(frequentRecivers: frequentsPresentatioinModel,
+            self.contactsPresnetatoinList = ContactListPresentationModel(frequentRecivers: frequentsPresentatioinModel,
                                mamoAccounts: mamoAccountsPresentatoinModel,
                                contacts: contactsPresentatioinModel)
         }

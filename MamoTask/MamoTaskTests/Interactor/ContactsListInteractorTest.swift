@@ -6,27 +6,40 @@
 //
 
 import XCTest
+@testable import MamoTask
+import Combine
 
 class ContactsListInteractorTest: XCTestCase {
+    
+    // MARK: - Properties
+    
+    var interactor : ContactsListInteractor!
+    var repository: ContactsListRepositoryMock!
+    private var bindings = Set<AnyCancellable>()
 
+    // MARK: - Life Cycle
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        repository = ContactsListRepositoryMock()
+        interactor = ContactsListInteractorImplementation(repository: repository)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        interactor = nil
+        repository = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    // MARK: - API Calls
+    
+    func test_FetchPresentationModel_ReturnValidList() {
+        XCTAssertEqual(5, 5)
+        interactor.contactPermission()
+        interactor.authorizationStatus()
+        interactor.contactsPresnetatoinLogic.sink { contactsPresentationModel in
+            // conver to contactsViewaStateModel
+            
+        }.store(in: &bindings)
+        
     }
 
 }

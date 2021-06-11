@@ -18,7 +18,7 @@ final class HeaderView: UICollectionReusableView {
         
     }
     
-    
+    // configure ( text: String, shouldShowSeperator: Bool)
     func configuare(row: Int) {
         switch row {
         case 0:

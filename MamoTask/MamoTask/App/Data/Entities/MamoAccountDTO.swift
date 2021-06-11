@@ -12,5 +12,4 @@ struct MamoAccountDTO: Codable {
     var key: String
     var value: String
     var publicName: String?
-    
 }

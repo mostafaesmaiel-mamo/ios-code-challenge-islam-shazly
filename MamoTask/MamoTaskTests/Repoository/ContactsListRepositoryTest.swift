@@ -47,7 +47,7 @@ final class ContactsListRepositoryTest: XCTestCase {
     }
     
     func test_FetchMamoAccountsWithCorrectData_ReturnValidMamoList() {
-        apiClient.endPoint = .frequents
+        apiClient.endPoint = .mamoAccounts
         repository.fetchSearch(emails: ["",""], phones: [""]) { result in
             switch result {
             case .success(let mamoAccounts):

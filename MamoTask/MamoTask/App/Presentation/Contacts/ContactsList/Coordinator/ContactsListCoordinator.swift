@@ -14,6 +14,7 @@ final class ContactsListCoordinator: BaseCoordinator {
     private var router: Router
     private var builder: ContactsListBuilder!
     private var bindings = Set<AnyCancellable>()
+    
     // Mark: - Init
     
     init(router: Router, builder: ContactsListBuilder) {

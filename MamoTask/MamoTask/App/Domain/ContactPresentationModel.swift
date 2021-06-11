@@ -17,7 +17,7 @@ struct ContactPresentationModel {
     var isMamoAccount: Bool = false
 }
 
-struct ContactsPresentationModel {
+struct ContactListPresentationModel {
     var frequentRecivers: [ContactPresentationModel]
     var mamoAccounts: [ContactPresentationModel]
     var contacts: [ContactPresentationModel]

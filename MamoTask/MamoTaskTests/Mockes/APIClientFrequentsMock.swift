@@ -5,9 +5,7 @@
 //
 
 import XCTest
-
 @testable import MamoTask
-
 
 final class APIClientMock: ApiClient {
     
@@ -20,7 +18,6 @@ final class APIClientMock: ApiClient {
         case frequents
         case mamoAccounts
     }
-    
     // MARK: - API
     
     
