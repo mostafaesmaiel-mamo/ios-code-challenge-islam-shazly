@@ -54,23 +54,36 @@ final class ContactListViewController: UIViewController {
     
     private func setupBinding() {
         viewModel.$shouldShowContactsCollectionViewState
-            .receive(on: RunLoop.main).sink { [weak self] bool in
+            .receive(on: RunLoop.main)
+            .sink { [weak self] bool in
                 self?.collectionView.isHidden = !bool
             }.store(in: &bindings)
         
         viewModel.$shouldShowPermssionButtonState
-            .receive(on: RunLoop.main).sink { [weak self] bool in
+            .receive(on: RunLoop.main)
+            .sink { [weak self] bool in
                 self?.button.isHidden = !bool
             }.store(in: &bindings)
         
-        viewModel.$contactsStateViewModel
+        
+        viewModel.contactsListViewStateModel
             .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] viewModel in
-                self?.frequentList = viewModel.frequentsReciver
-                self?.mamoList = viewModel.mamoAccounts
-                self?.contacts = viewModel.contacts
-                self?.collectionView.reloadData()
-            }).store(in: &bindings)
+            .mapError({ error -> Error in
+                self.showAlert(string: error.localizedDescription) { _ in
+                    self.viewModel.contactPickerLogic()
+                }
+                return error
+            })
+            .sink { _ in
+            } receiveValue: { [weak self] viewModel in
+                
+                guard let self = self else { return }
+                
+                self.frequentList = viewModel.frequentsReciver
+                self.mamoList = viewModel.mamoAccounts
+                self.contacts = viewModel.contacts
+                self.collectionView.reloadData()
+            }.store(in: &bindings)
     }
     
     static func createLayout() -> UICollectionViewLayout {

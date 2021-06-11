@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ContactsViewStateModel {
+struct ContactListViewStateModel {
     
     var frequentsReciver: [ContactViewStateModel]
     var mamoAccounts: [ContactViewStateModel]
