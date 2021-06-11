@@ -78,4 +78,20 @@ final class ContactsListViewModelImplmentation: ContactsListViewModel {
         
     }
     
+    func headerViewModel(section: Int) -> HeaderViewStateModel {
+        var headerStateModel: HeaderViewStateModel!
+        
+        switch section {
+        case 0:
+            headerStateModel = HeaderViewStateModel(title: "Frequents", shouldShowSeperatorr: true)
+        case 1:
+            headerStateModel = HeaderViewStateModel(title: "Your Friends on Momo", shouldShowSeperatorr: false)
+        case 2:
+            headerStateModel =  HeaderViewStateModel(title: "Your Contacts", shouldShowSeperatorr: true)
+        default:
+            return HeaderViewStateModel(title: "", shouldShowSeperatorr: false)
+        }
+        return headerStateModel
+    }
+    
 }

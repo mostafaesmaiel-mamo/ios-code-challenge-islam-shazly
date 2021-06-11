@@ -48,7 +48,7 @@
 		9BE48B4F2672BD6600AFA2D7 /* ContactViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B4D2672BD6600AFA2D7 /* ContactViewStateModel.swift */; };
 		9BE48B532672BDAC00AFA2D7 /* FrequentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE48B512672BDAC00AFA2D7 /* FrequentView.xib */; };
 		9BE48B542672BDAC00AFA2D7 /* FrequentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B522672BDAC00AFA2D7 /* FrequentView.swift */; };
-		9BE48B572672BDBC00AFA2D7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B562672BDBC00AFA2D7 /* HeaderView.swift */; };
+		9BE48B572672BDBC00AFA2D7 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B562672BDBC00AFA2D7 /* HeaderViewModel.swift */; };
 		9BE48B5D2672BDDC00AFA2D7 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B582672BDDC00AFA2D7 /* CollectionViewCell.swift */; };
 		9BE48B5E2672BDDC00AFA2D7 /* FrequentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48B592672BDDC00AFA2D7 /* FrequentCollectionViewCell.swift */; };
 		9BE48B5F2672BDDC00AFA2D7 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE48B5A2672BDDC00AFA2D7 /* CollectionViewCell.xib */; };
@@ -134,7 +134,7 @@
 		9BE48B4D2672BD6600AFA2D7 /* ContactViewStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewStateModel.swift; sourceTree = "<group>"; };
 		9BE48B512672BDAC00AFA2D7 /* FrequentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrequentView.xib; sourceTree = "<group>"; };
 		9BE48B522672BDAC00AFA2D7 /* FrequentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequentView.swift; sourceTree = "<group>"; };
-		9BE48B562672BDBC00AFA2D7 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		9BE48B562672BDBC00AFA2D7 /* HeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
 		9BE48B582672BDDC00AFA2D7 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		9BE48B592672BDDC00AFA2D7 /* FrequentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequentCollectionViewCell.swift; sourceTree = "<group>"; };
 		9BE48B5A2672BDDC00AFA2D7 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
@@ -439,9 +439,9 @@
 		9BE48B482672BCB000AFA2D7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9BE48B5B2672BDDC00AFA2D7 /* ContactListViewController.swift */,
 				9BE48B582672BDDC00AFA2D7 /* CollectionViewCell.swift */,
 				9BE48B5A2672BDDC00AFA2D7 /* CollectionViewCell.xib */,
-				9BE48B5B2672BDDC00AFA2D7 /* ContactListViewController.swift */,
 				9BE48B592672BDDC00AFA2D7 /* FrequentCollectionViewCell.swift */,
 				9BE48B5C2672BDDC00AFA2D7 /* FrequentCollectionViewCell.xib */,
 			);
@@ -485,7 +485,7 @@
 		9BE48B552672BDB000AFA2D7 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				9BE48B562672BDBC00AFA2D7 /* HeaderView.swift */,
+				9BE48B562672BDBC00AFA2D7 /* HeaderViewModel.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -759,7 +759,7 @@
 				9BE48B632672BE5F00AFA2D7 /* ContactsBuilder.swift in Sources */,
 				9BE48B652672BE6F00AFA2D7 /* ContactsListCoordinator.swift in Sources */,
 				9BE48B422672BB3000AFA2D7 /* ContactsListInteractor.swift in Sources */,
-				9BE48B572672BDBC00AFA2D7 /* HeaderView.swift in Sources */,
+				9BE48B572672BDBC00AFA2D7 /* HeaderViewModel.swift in Sources */,
 				9BE48B542672BDAC00AFA2D7 /* FrequentView.swift in Sources */,
 				9BE48B6E2672BFF200AFA2D7 /* ContactDetailsViewModel.swift in Sources */,
 				9BE48AD62672B84600AFA2D7 /* ApiClient.swift in Sources */,

@@ -158,14 +158,14 @@ extension ContactListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         guard let headerView = collectionView.dequeueReusableView(
-                with: HeaderView.self,
+                with: HeaderViewModel.self,
                 for: indexPath,
-                ofKind: UICollectionView.elementKindSectionHeader) as? HeaderView else {
+                ofKind: UICollectionView.elementKindSectionHeader) as? HeaderViewModel else {
             
             return UICollectionReusableView()
         }
         
-        headerView.configuare(row: indexPath.section)
+        headerView.configure(headerModel: viewModel.headerViewModel(section: indexPath.section))
         
         return headerView
     }
