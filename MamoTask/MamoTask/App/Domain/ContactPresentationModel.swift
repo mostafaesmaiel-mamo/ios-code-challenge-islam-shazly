@@ -16,11 +16,3 @@ struct ContactPresentationModel {
     var dataImage: Data?
     var isMamoAccount: Bool = false
 }
-
-struct ContactListPresentationModel {
-    var frequentRecivers: [ContactPresentationModel]
-    var mamoAccounts: [ContactPresentationModel]
-    var contacts: [ContactPresentationModel]
-    
-    
-}

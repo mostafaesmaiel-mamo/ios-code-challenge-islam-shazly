@@ -7,9 +7,11 @@
 import Foundation
 
 protocol ContactsListRepository {
+    typealias FrequentReceiverHandler = APIResultHandler<FrequentListDTO>
+    typealias MamoAccountsHandler = APIResultHandler<MamoAccountListDTO>
     
-    func fetchFrequentReceivers(completion: @escaping APIResultHandler<FrequentListDTO>)
-    func fetchSearch(emails:[String], phones: [String], completion: @escaping APIResultHandler<MamoAccountListDTO>)
+    func fetchFrequentReceivers(completion: @escaping FrequentReceiverHandler)
+    func fetchSearch(emails:[String], phones: [String], completion: @escaping MamoAccountsHandler)
 }
 
 final class ContactsListRepositoryImplementation: ContactsListRepository {
@@ -26,9 +28,8 @@ final class ContactsListRepositoryImplementation: ContactsListRepository {
     
     // MARK: - API
     
-    func fetchFrequentReceivers(completion: @escaping APIResultHandler<FrequentListDTO>) {
+    func fetchFrequentReceivers(completion: @escaping FrequentReceiverHandler) {
         self.apiClient.execute(request: .frequentReceivers) { result in
-            
             switch result {
             case let .success(response):
                 do {
@@ -44,10 +45,8 @@ final class ContactsListRepositoryImplementation: ContactsListRepository {
         }
     }
     
-    func fetchSearch(emails: [String], phones: [String], completion: @escaping APIResultHandler<MamoAccountListDTO>) {
-        
+    func fetchSearch(emails: [String], phones: [String], completion: @escaping MamoAccountsHandler) {
         self.apiClient.execute(request: .searchAccounts(emails: emails, phones: phones)) { result in
-            
             switch result {
             case let .success(response):
                 do {

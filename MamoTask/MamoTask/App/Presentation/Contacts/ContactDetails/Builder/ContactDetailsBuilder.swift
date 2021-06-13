@@ -8,7 +8,7 @@ import UIKit
 
 final class ContactDetailsBuilder: Builder {
     
-    let contact: ContactViewStateModel
+    private let contact: ContactViewStateModel
     
     init(contact: ContactViewStateModel) {
         self.contact = contact

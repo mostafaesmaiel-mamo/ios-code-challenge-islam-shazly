@@ -31,16 +31,6 @@ public extension String {
         return range(of: text, options: compareOption) != nil
     }
     
-    var isValidSaudiMobileNumber: Bool {
-        do {
-            let regex = try NSRegularExpression(pattern: "^(9665)([0-9]{8})$", options: .caseInsensitive)
-            let regular = NSRegularExpression.MatchingOptions(rawValue: 0)
-            return regex.firstMatch(in: self, options: regular, range: NSMakeRange(0, self.count)) != nil
-        } catch {
-            return false
-        }
-    }
-    
     var englishNumbers: String {
         let cfstr = NSMutableString(string: self) as CFMutableString
         var range = CFRange(location: 0, length: CFStringGetLength(cfstr))

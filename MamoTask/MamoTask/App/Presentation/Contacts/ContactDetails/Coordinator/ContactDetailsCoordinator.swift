@@ -32,7 +32,6 @@ final class ContactDetailsCoordinator: BaseCoordinator {
     }
     
     func setupNavigationBinding(viewModel: ContactDetailsViewModel) {
-        
         viewModel.backToContactListState
             .receive(on: DispatchQueue.main)
             .sink { _ in

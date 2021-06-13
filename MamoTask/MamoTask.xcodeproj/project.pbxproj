@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B128C4C2676616300A0FE2D /* ContactListPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B128C4B2676616300A0FE2D /* ContactListPresentationModel.swift */; };
+		9B128C4E2676625300A0FE2D /* HeaderViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B128C4D2676625300A0FE2D /* HeaderViewStateModel.swift */; };
+		9B128C50267662C500A0FE2D /* ContactListViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B128C4F267662C500A0FE2D /* ContactListViewStateModel.swift */; };
 		9B799E082673A120002C0C16 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B799E072673A120002C0C16 /* ContactsManager.swift */; };
 		9B799E0A2673F57B002C0C16 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B799E092673F57B002C0C16 /* UIViewController+Extensions.swift */; };
 		9BE48A762672909800AFA2D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48A752672909800AFA2D7 /* AppDelegate.swift */; };
@@ -90,6 +93,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B128C4B2676616300A0FE2D /* ContactListPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPresentationModel.swift; sourceTree = "<group>"; };
+		9B128C4D2676625300A0FE2D /* HeaderViewStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewStateModel.swift; sourceTree = "<group>"; };
+		9B128C4F267662C500A0FE2D /* ContactListViewStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewStateModel.swift; sourceTree = "<group>"; };
 		9B799E072673A120002C0C16 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		9B799E092673F57B002C0C16 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		9BE48A722672909800AFA2D7 /* MamoTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MamoTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +305,7 @@
 				9B799E072673A120002C0C16 /* ContactsManager.swift */,
 				9BE48B402672BB3000AFA2D7 /* ContactsListInteractor.swift */,
 				9BE48B3F2672BB3000AFA2D7 /* ContactPresentationModel.swift */,
+				9B128C4B2676616300A0FE2D /* ContactListPresentationModel.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -456,6 +463,7 @@
 			children = (
 				9BE48B4C2672BD6600AFA2D7 /* ContactsListViewModel.swift */,
 				9BE48B4D2672BD6600AFA2D7 /* ContactViewStateModel.swift */,
+				9B128C4F267662C500A0FE2D /* ContactListViewStateModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -489,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				9BE48B562672BDBC00AFA2D7 /* HeaderViewModel.swift */,
+				9B128C4D2676625300A0FE2D /* HeaderViewStateModel.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -750,10 +759,12 @@
 				9BE48B3E2672B9F900AFA2D7 /* ContactsListRepository.swift in Sources */,
 				9BE48B5D2672BDDC00AFA2D7 /* CollectionViewCell.swift in Sources */,
 				9BE48B3A2672B9BF00AFA2D7 /* FrequentReciverDTO.swift in Sources */,
+				9B128C4E2676625300A0FE2D /* HeaderViewStateModel.swift in Sources */,
 				9BE48AD82672B84600AFA2D7 /* Endpoints.swift in Sources */,
 				9BE48B602672BDDC00AFA2D7 /* ContactListViewController.swift in Sources */,
 				9BE48B452672BBCB00AFA2D7 /* NextButton.swift in Sources */,
 				9BE48B0F2672B89300AFA2D7 /* String+Extensions.swift in Sources */,
+				9B128C50267662C500A0FE2D /* ContactListViewStateModel.swift in Sources */,
 				9BE48B272672B89300AFA2D7 /* Result+Extensions.swift in Sources */,
 				9BE48B2E2672B8F300AFA2D7 /* Router.swift in Sources */,
 				9B799E082673A120002C0C16 /* ContactsManager.swift in Sources */,
@@ -761,6 +772,7 @@
 				9BE48B2A2672B8E600AFA2D7 /* BaseCoordinator.swift in Sources */,
 				9BE48B632672BE5F00AFA2D7 /* ContactsBuilder.swift in Sources */,
 				9BE48B652672BE6F00AFA2D7 /* ContactsListCoordinator.swift in Sources */,
+				9B128C4C2676616300A0FE2D /* ContactListPresentationModel.swift in Sources */,
 				9BE48B422672BB3000AFA2D7 /* ContactsListInteractor.swift in Sources */,
 				9BE48B572672BDBC00AFA2D7 /* HeaderViewModel.swift in Sources */,
 				9BE48B542672BDAC00AFA2D7 /* FrequentView.swift in Sources */,

@@ -18,16 +18,19 @@ protocol ContactsListInteractor {
 
 final class ContactsListInteractorImplementation: ContactsListInteractor {
     
+    private typealias CotactPresentationHashMap = [String: ContactPresentationModel]
+    private typealias ContactsDTO = (MamoAccountListDTO, FrequentListDTO)
+    private typealias ContactsDTOHandler = (Result<ContactsDTO, Error>) -> Void
     
     // MARK: - Properties
     
     var contactsPresnetatoinLogic: PassthroughSubject<ContactListPresentationModel, Error>
     var contactPermissionLogic: Published<ContactPermissionState>.Publisher { $contactPermissionState }
-    
     private var repository: ContactsListRepository!
     private var contactsManger: ContactsManger!
-    
     @Published private(set) var contactPermissionState = ContactPermissionState.none
+    
+    // MARK: - Init
     
     init(repository: ContactsListRepository, contactsManger: ContactsManger) {
         self.repository = repository
@@ -36,9 +39,7 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
         contactPickerLogic()
     }
     
-    // MARK: - API
-    
-    func contactPickerLogic () {
+    func contactPickerLogic() {
         contactsManger.authorizationStatus { [weak self] status in
             switch status {
             case .authorized:
@@ -47,42 +48,66 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
             case .denied:
                 self?.contactPermissionState = .denied
             case .none:
+                self?.requestContactPermission()
+            }
+        }
+    }
+    
+    
+    
+}
+// MARK: - Private Methods
+
+extension ContactsListInteractorImplementation {
+    
+    private func requestContactPermission() {
+        contactsManger.requestContactPermission { [weak self] status in
+            switch status {
+            case .authorized:
+                self?.contactPermissionState = .authorized
+                self?.fetchAllContacts()
+            case .denied, .none:
                 self?.contactPermissionState = .denied
             }
         }
     }
     
-    func fetchAllContacts() {
+    private func sendContactsPresentationList(contactsDTO: ContactsDTO, contactHashMap: CotactPresentationHashMap) {
+        
+        let mamoListDTo = contactsDTO.0
+        let frequentListDTO = contactsDTO.1
+        let mamoInfoTuple = self.mamoAccountList(
+            mamoContanctsListDTO: mamoListDTo,
+            contactsHashMap: contactHashMap
+        )
+        let mamoPresentationList = mamoInfoTuple.mamoList
+        let mamoAccountshashMap = mamoInfoTuple.mamoAccounthashMap
+        let contactshashMapWithOutMamo = mamoInfoTuple.contacthashMapWithoutMamo
+        let frequentsPresentationList = self.frequentList(
+            frequentsListDTO: frequentListDTO,
+            mamoAccounthashMap: mamoAccountshashMap
+        )
+        let localContactPresentationList = self.localContactsList(contacthashMap: contactshashMapWithOutMamo)
+        let contactsPresentationList = ContactListPresentationModel(
+            frequentRecivers: frequentsPresentationList,
+            mamoAccounts: mamoPresentationList,
+            contacts: localContactPresentationList
+        )
+        self.contactsPresnetatoinLogic.send(contactsPresentationList)
+    }
+    
+    private func fetchAllContacts() {
         contactsManger.fetchLocalContacts { result in
             switch result {
             case .success(let contacts):
-                let tuple = self.extractContactsDicEmailPhone(contacts: contacts)
-                let contactsDic = tuple.contactsDic
+                let tuple = self.contactsHashMap(contacts: contacts)
+                let contactsHashMap = tuple.contactsHashMap
                 let email = tuple.emails
                 let phone = tuple.phones
                 self.fetchMamoAccounts(emails: email, phones: phone) { result in
                     switch result {
                     case .success(let tuple):
-                        let mamoListDTo = tuple.0
-                        let frequentListDTO = tuple.1
-                        let mamoInfoTuple = self.extractMamoAccountDicMamoListContactDic(
-                            mamoContanctsListDTO: mamoListDTo,
-                            contactsDic: contactsDic
-                        )
-                        let mamoPresentationList = mamoInfoTuple.mamoList
-                        let mamoAccountsDic = mamoInfoTuple.mamoAccountdic
-                        let contactsDicWithOutMamo = mamoInfoTuple.contactDicWithoutMamo
-                        let frequentsPresentationList = self.extractFrequentFromMamaDic(
-                            frequentsListDTO: frequentListDTO,
-                            mamoAccountDic: mamoAccountsDic
-                        )
-                        let localContactPresentationList = self.extractLocalContactsFormContactDic(contactDic: contactsDicWithOutMamo)
-                        let contactsPresentationList = ContactListPresentationModel(
-                            frequentRecivers: frequentsPresentationList,
-                            mamoAccounts: mamoPresentationList,
-                            contacts: localContactPresentationList
-                        )
-                        self.contactsPresnetatoinLogic.send(contactsPresentationList)
+                        self.sendContactsPresentationList(contactsDTO: tuple, contactHashMap: contactsHashMap)
                     case .failure(let error):
                         self.contactsPresnetatoinLogic.send(completion: .failure(error))
                     }
@@ -93,10 +118,10 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
         }
     }
     
-    func fetchMamoAccounts(
+    private func fetchMamoAccounts(
         emails: [String],
         phones: [String],
-        completion: @escaping (Result<(MamoAccountListDTO, FrequentListDTO), Error>) -> Void
+        completion: @escaping ContactsDTOHandler
     ) {
         
         var mamoContanctsListDTO: MamoAccountListDTO!
@@ -107,7 +132,6 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
         
         group.enter()
         repository.fetchSearch(emails: emails, phones: phones) { result in
-            
             switch result {
             case .success(let mamoAccounts):
                 mamoContanctsListDTO = mamoAccounts
@@ -120,7 +144,6 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
         
         group.enter()
         repository.fetchFrequentReceivers { result in
-            
             switch result {
             case .success(let list):
                 frequentsListDTO = list
@@ -140,12 +163,8 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
         }
     }
     
-    // MARK: - Methods
-    
-    func extractContactsDicEmailPhone(
-        contacts: [CNContact]
-    ) -> (contactsDic: [String: ContactPresentationModel], emails: [String], phones: [String]) {
-        var contactsDic = [String: ContactPresentationModel]()
+    private func contactsHashMap(contacts: [CNContact]) -> (contactsHashMap: CotactPresentationHashMap, emails: [String], phones: [String]) {
+        var contactsHashMap = CotactPresentationHashMap()
         var emails = [String]()
         var phones = [String]()
         
@@ -153,30 +172,33 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
             for phone in contact.phoneNumbers {
                 let mobile = phone.value.stringValue.formatMobileNumber()
                 phones.append(mobile)
-                contactsDic[mobile] = ContactPresentationModel(id: "", key: "phone", value: mobile, publicName: contact.givenName + " " + contact.familyName, dataImage: contact.imageData, isMamoAccount: false)
+                contactsHashMap[mobile] = ContactPresentationModel(id: "", key: "phone", value: mobile, publicName: contact.givenName + " " + contact.familyName, dataImage: contact.imageData, isMamoAccount: false)
             }
             
             for email in contact.emailAddresses {
                 let email = String(email.value).lowercased()
                 emails.append(email)
-                contactsDic[email] = ContactPresentationModel(id: "", key: "email", value: email.lowercased(), publicName: contact.givenName + " " + contact.familyName, dataImage: contact.imageData, isMamoAccount: false)
+                contactsHashMap[email] = ContactPresentationModel(id: "", key: "email", value: email.lowercased(), publicName: contact.givenName + " " + contact.familyName, dataImage: contact.imageData, isMamoAccount: false)
             }
         }
-        return (contactsDic, emails, phones)
+        
+        return (contactsHashMap, emails, phones)
     }
     
-    func extractMamoAccountDicMamoListContactDic(
+    private func mamoAccountList(
         mamoContanctsListDTO: MamoAccountListDTO,
-        contactsDic: [String: ContactPresentationModel]
-    ) -> (mamoAccountdic: [String: ContactPresentationModel], mamoList: [ContactPresentationModel], contactDicWithoutMamo: [String: ContactPresentationModel]) {
+        contactsHashMap: CotactPresentationHashMap
+    ) -> (mamoAccounthashMap: CotactPresentationHashMap,
+          mamoList: [ContactPresentationModel],
+          contacthashMapWithoutMamo: CotactPresentationHashMap) {
         
         var mamoAccountsPresentatoinModel = [ContactPresentationModel]()
-        var mamoAccountDic = [String: ContactPresentationModel]()
-        var contactsDic = contactsDic
+        var mamoAccounthashMap = CotactPresentationHashMap()
+        var contactsHashMap = contactsHashMap
         for mamo in mamoContanctsListDTO.mamoAccounts {
             
-            if let contact = contactsDic[mamo.value.lowercased()] {
-                contactsDic[mamo.value.lowercased()] = nil
+            if let contact = contactsHashMap[mamo.value.lowercased()] {
+                contactsHashMap[mamo.value.lowercased()] = nil
                 let contactPresentationModel = ContactPresentationModel(
                     id: mamo.id,
                     key: mamo.key,
@@ -185,21 +207,22 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
                     dataImage: contact.dataImage,
                     isMamoAccount: true)
                 mamoAccountsPresentatoinModel.append(contactPresentationModel)
-                mamoAccountDic[mamo.id] = contactPresentationModel
+                mamoAccounthashMap[mamo.id] = contactPresentationModel
             }
         }
-        return (mamoAccountDic, mamoAccountsPresentatoinModel, contactsDic)
+        
+        return (mamoAccounthashMap, mamoAccountsPresentatoinModel, contactsHashMap)
     }
     
-    func extractFrequentFromMamaDic(
+    private func frequentList(
         frequentsListDTO: FrequentListDTO,
-        mamoAccountDic: [String: ContactPresentationModel]
+        mamoAccounthashMap: CotactPresentationHashMap
     ) -> [ContactPresentationModel] {
         var frequentsPresentatioinModel = [ContactPresentationModel]()
         for frequent in frequentsListDTO.frequents {
-            var contactPresentationModel: ContactPresentationModel!
+            let contactPresentationModel: ContactPresentationModel
             
-            if let mamo = mamoAccountDic[frequent.id] {
+            if let mamo = mamoAccounthashMap[frequent.id] {
                 contactPresentationModel = ContactPresentationModel(
                     id: mamo.id,
                     key: mamo.key,
@@ -220,16 +243,18 @@ final class ContactsListInteractorImplementation: ContactsListInteractor {
             }
             frequentsPresentatioinModel.append(contactPresentationModel)
         }
+        
         return frequentsPresentatioinModel
     }
     
-    func extractLocalContactsFormContactDic(contactDic: [String: ContactPresentationModel]) -> [ContactPresentationModel] {
+    private func localContactsList(contacthashMap: [String: ContactPresentationModel]) -> [ContactPresentationModel] {
         var contactsPresentatioinModel = [ContactPresentationModel]()
         
-        for contact in contactDic.values {
+        for contact in contacthashMap.values {
             contactsPresentatioinModel.append(contact)
         }
         
         return contactsPresentatioinModel
     }
+    
 }
