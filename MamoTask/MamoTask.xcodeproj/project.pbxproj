@@ -10,6 +10,8 @@
 		9B128C4C2676616300A0FE2D /* ContactListPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B128C4B2676616300A0FE2D /* ContactListPresentationModel.swift */; };
 		9B128C4E2676625300A0FE2D /* HeaderViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B128C4D2676625300A0FE2D /* HeaderViewStateModel.swift */; };
 		9B128C50267662C500A0FE2D /* ContactListViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B128C4F267662C500A0FE2D /* ContactListViewStateModel.swift */; };
+		9B128C522676759200A0FE2D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B128C512676759200A0FE2D /* UIColor+Extensions.swift */; };
+		9B128C54267675C700A0FE2D /* CGFloat+Extensios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B128C53267675C700A0FE2D /* CGFloat+Extensios.swift */; };
 		9B799E082673A120002C0C16 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B799E072673A120002C0C16 /* ContactsManager.swift */; };
 		9B799E0A2673F57B002C0C16 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B799E092673F57B002C0C16 /* UIViewController+Extensions.swift */; };
 		9BE48A762672909800AFA2D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE48A752672909800AFA2D7 /* AppDelegate.swift */; };
@@ -96,6 +98,8 @@
 		9B128C4B2676616300A0FE2D /* ContactListPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPresentationModel.swift; sourceTree = "<group>"; };
 		9B128C4D2676625300A0FE2D /* HeaderViewStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewStateModel.swift; sourceTree = "<group>"; };
 		9B128C4F267662C500A0FE2D /* ContactListViewStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewStateModel.swift; sourceTree = "<group>"; };
+		9B128C512676759200A0FE2D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		9B128C53267675C700A0FE2D /* CGFloat+Extensios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensios.swift"; sourceTree = "<group>"; };
 		9B799E072673A120002C0C16 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		9B799E092673F57B002C0C16 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		9BE48A722672909800AFA2D7 /* MamoTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MamoTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -384,6 +388,8 @@
 				9BE48AE92672B89200AFA2D7 /* String+Extensions.swift */,
 				9BE48AEE2672B89200AFA2D7 /* UICollectionView+Extensions.swift */,
 				9BE48AED2672B89200AFA2D7 /* UIView+Extensions.swift */,
+				9B128C53267675C700A0FE2D /* CGFloat+Extensios.swift */,
+				9B128C512676759200A0FE2D /* UIColor+Extensions.swift */,
 				9B799E092673F57B002C0C16 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
@@ -743,6 +749,7 @@
 				9BE48B5E2672BDDC00AFA2D7 /* FrequentCollectionViewCell.swift in Sources */,
 				9BE48B0E2672B89300AFA2D7 /* CGRect+Extensions.swift in Sources */,
 				9BE48B232672B89300AFA2D7 /* NSObject+Extensions.swift in Sources */,
+				9B128C522676759200A0FE2D /* UIColor+Extensions.swift in Sources */,
 				9BE48B412672BB3000AFA2D7 /* ContactPresentationModel.swift in Sources */,
 				9BE48B1E2672B89300AFA2D7 /* Codable+Extensions.swift in Sources */,
 				9BE48A762672909800AFA2D7 /* AppDelegate.swift in Sources */,
@@ -750,6 +757,7 @@
 				9BE48B132672B89300AFA2D7 /* UIView+Extensions.swift in Sources */,
 				9BE48B702672BFFA00AFA2D7 /* ContactDetailsViewController.swift in Sources */,
 				9BE48AC22672B68B00AFA2D7 /* StoryBoardConstants.swift in Sources */,
+				9B128C54267675C700A0FE2D /* CGFloat+Extensios.swift in Sources */,
 				9BE48B072672B89300AFA2D7 /* Bundle+Extensions.swift in Sources */,
 				9BE48B392672B9BF00AFA2D7 /* FrequentListDTO.swift in Sources */,
 				9BE48B312672B91400AFA2D7 /* Builder.swift in Sources */,

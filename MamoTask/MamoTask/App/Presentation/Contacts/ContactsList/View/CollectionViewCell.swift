@@ -27,6 +27,9 @@ class CollectionViewCell: UICollectionViewCell {
         nameLabel.text = contact.name
         mamoIcon.isHidden = false
         prefixNameLabel.text = contact.prefixName
+        let rondamColor = UIColor.random()
+        prefixNameLabel.textColor = rondamColor
+        prefixNameLabel.backgroundColor = rondamColor.withAlphaComponent(0.1)
         if contact.isSelected {
             addBorder(width: 2, color: #colorLiteral(red: 0.2196078431, green: 0.2196078431, blue: 1, alpha: 1))
         } else {
