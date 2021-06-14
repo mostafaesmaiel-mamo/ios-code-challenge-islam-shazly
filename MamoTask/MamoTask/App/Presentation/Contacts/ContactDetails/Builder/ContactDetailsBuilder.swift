@@ -15,8 +15,8 @@ final class ContactDetailsBuilder: Builder {
     }
     
     func build() -> ContactDetailsViewController {
-        let contactDetailsViewController = ContactDetailsViewController.initFromStoryboard(storyboard: C.StoryBoard.Contacts)
-        let viewModel = ContactDetailsViewModelImplmentation()
+        let contactDetailsViewController = ContactDetailsViewController.initFromStoryboard(storyboard: Constant.StoryBoard.Contacts)
+        let viewModel = ContactDetailsViewModel()
         contactDetailsViewController.viewModel = viewModel
         contactDetailsViewController.contact = contact
         

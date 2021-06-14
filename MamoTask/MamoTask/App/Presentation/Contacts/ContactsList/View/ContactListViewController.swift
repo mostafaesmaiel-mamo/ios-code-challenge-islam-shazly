@@ -2,7 +2,6 @@
 //  ViewController.swift
 //  Mamo
 //
-//  Created by islam Elshazly on 31/05/2021.
 //
 
 import UIKit
@@ -11,14 +10,12 @@ import Combine
 final class ContactListViewController: UIViewController {
     
     // MARK: - Outlets
-    
     @IBOutlet weak private var button: UIButton!
     @IBOutlet weak private var collectionView: UICollectionView!
     @IBOutlet weak private var nextButton: NextButton!
     
     // MARK: - Properties
-    
-    var viewModel: ContactsListViewModelImplmentation!
+    var viewModel: ContactsListViewModel!
     private var bindings = Set<AnyCancellable>()
     private var frequentList = [ContactViewStateModel]()
     private var mamoList = [ContactViewStateModel]()
@@ -26,7 +23,6 @@ final class ContactListViewController: UIViewController {
     private var selectedContact: ContactViewStateModel!
     
     // MARK: - Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,52 +37,10 @@ final class ContactListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        connfigureUI()
-    }
-    
-    private func connfigureUI() {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        nextButton.isEnabled = false
-    }
-    
-    private func setupBinding() {
-        viewModel.$shouldShowContactsCollectionViewState
-            .receive(on: RunLoop.main)
-            .sink { [weak self] bool in
-                self?.collectionView.isHidden = !bool
-            }.store(in: &bindings)
-        
-        viewModel.$shouldShowPermssionButtonState
-            .receive(on: RunLoop.main)
-            .sink { [weak self] bool in
-                self?.button.isHidden = !bool
-            }.store(in: &bindings)
-        
-        
-        viewModel.contactsListViewStateModel
-            .receive(on: RunLoop.main)
-            .mapError({ [weak self] error -> Error in
-                
-                self?.showAlert(string: error.localizedDescription) { _ in
-                    self?.viewModel.contactPickerLogic()
-                }
-                return error
-            })
-            .sink { _ in
-            } receiveValue: { [weak self] viewModel in
-                
-                guard let self = self else { return }
-                
-                self.frequentList = viewModel.frequentsReciver
-                self.mamoList = viewModel.mamoAccounts
-                self.contacts = viewModel.contacts
-                self.collectionView.reloadData()
-            }.store(in: &bindings)
+        configureUI()
     }
     
     // MARK: - Actions
-    
     @IBAction private func permissionAction(_ sender: Any) {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
             return
@@ -163,6 +117,7 @@ extension ContactListViewController: UICollectionViewDataSource {
 }
 
 extension ContactListViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         switch indexPath.section {
@@ -180,20 +135,20 @@ extension ContactListViewController: UICollectionViewDelegate {
     }
 }
 
-extension ContactListViewController {
+private extension ContactListViewController {
     
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             if section == 0 {
-                return self?.createHorizontalLayout()
+                return self?.createHorizontalSection()
             } else {
-                return self?.createVertical()
+                return self?.createVerticalSection()
             }
         }
         return layout
     }
     
-    private func createHorizontalLayout() -> NSCollectionLayoutSection {
+    private func createHorizontalSection() -> NSCollectionLayoutSection {
         let itemInset = NSDirectionalEdgeInsets(top: 0.0,
                                                 leading: 8.0,
                                                 bottom: 0.0,
@@ -224,7 +179,7 @@ extension ContactListViewController {
         return section
     }
     
-    private func createVertical() -> NSCollectionLayoutSection {
+    private func createVerticalSection() -> NSCollectionLayoutSection {
         
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 0,
@@ -251,5 +206,49 @@ extension ContactListViewController {
         section.boundarySupplementaryItems = [headerSupplementary]
         
         return section
+    }
+}
+
+
+private extension ContactListViewController {
+    
+    private func configureUI() {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        nextButton.isEnabled = false
+    }
+    
+    private func setupBinding() {
+        viewModel.$shouldShowContactsCollectionViewState
+            .receive(on: RunLoop.main)
+            .sink { [weak self] bool in
+                self?.collectionView.isHidden = !bool
+            }.store(in: &bindings)
+        
+        viewModel.$shouldShowPermissionButtonState
+            .receive(on: RunLoop.main)
+            .sink { [weak self] bool in
+                self?.button.isHidden = !bool
+            }.store(in: &bindings)
+        
+        
+        viewModel.contactsListViewStateModel
+            .receive(on: RunLoop.main)
+            .mapError({ [weak self] error -> Error in
+                
+                self?.showAlert(string: error.localizedDescription) { _ in
+                    self?.viewModel.pickContact()
+                }
+                return error
+            })
+            .sink { _ in
+            } receiveValue: { [weak self] viewModel in
+                
+                guard let self = self else { return }
+                
+                self.frequentList = viewModel.frequentsReceiver
+                self.mamoList = viewModel.mamoAccounts
+                self.contacts = viewModel.contacts
+                self.collectionView.reloadData()
+            }.store(in: &bindings)
     }
 }

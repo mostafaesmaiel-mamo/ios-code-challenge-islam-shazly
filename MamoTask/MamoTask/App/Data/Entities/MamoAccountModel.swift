@@ -1,12 +1,12 @@
 //
-//  mamoAccountsModel.swift
+//  MamoAccountModel.swift
 //  Mamo
 //
 //
 
 import Foundation
 
-struct MamoAccountDTO: Codable {
+struct MamoAccountModel: Codable {
     
     var id: String
     var key: String

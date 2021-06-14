@@ -2,27 +2,14 @@
 //  ContactsManager.swift
 //  MamoTask
 //
-//  Created by islam Elshazly on 11/06/2021.
 //
 
 import Foundation
 import SwiftyContacts
 
-enum ContactPermissionState {
-    case authorized
-    case denied
-    case none
-}
-
-protocol ContactsManger {
-    func authorizationStatus(completion: @escaping ((ContactPermissionState) -> Void))
-    func requestContactPermission(completion: @escaping ((ContactPermissionState) -> Void))
-    func fetchLocalContacts(completion: @escaping APIResultHandler<[CNContact]>)
-}
-
-final class ContactsMangerImplementation: ContactsManger {
+final class ContactsManager: ContactsManagerable {
     
-    func authorizationStatus(completion: @escaping ((ContactPermissionState) -> Void)) {
+    func authorizationStatus(completion: @escaping PermissionCompletion) {
         SwiftyContacts.authorizationStatus {status in
             switch status {
             case .authorized:
@@ -36,7 +23,7 @@ final class ContactsMangerImplementation: ContactsManger {
         }
     }
     
-    func requestContactPermission(completion: @escaping ((ContactPermissionState) -> Void)) {
+    func requestContactPermission(completion: @escaping PermissionCompletion) {
         SwiftyContacts.requestAccess { response  in
             if response {
                 completion(.authorized)

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class AppCoordinnator: BaseCoordinator {
+final class AppCoordinator: BaseCoordinator {
     
     // MARK: - Properties
     

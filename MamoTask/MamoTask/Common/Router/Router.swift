@@ -2,7 +2,6 @@
 //  Router.swift
 //  Mamo
 //
-//  Created by islam Elshazly on 02/06/2021.
 //
 
 import UIKit

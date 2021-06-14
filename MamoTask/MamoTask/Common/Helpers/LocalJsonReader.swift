@@ -1,10 +1,3 @@
-//
-//  LocalJsonReader.swift
-//  BackbaseCodeChallenge
-//
-//  Created by islam Elshazly on 24/07/2020.
-//  Copyright © 2020 Islam Elshazly. All rights reserved.
-//
 
 import Foundation
 

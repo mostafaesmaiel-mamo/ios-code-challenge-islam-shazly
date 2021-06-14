@@ -11,7 +11,7 @@ final class APIClientMock: ApiClient {
     
     // MARK: - Properties
     
-    var error: BackendError?
+    var error: Error?
     var endPoint: EndPoint!
     
     enum EndPoint: String {

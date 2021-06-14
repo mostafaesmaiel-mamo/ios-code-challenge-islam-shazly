@@ -8,16 +8,16 @@ import UIKit
 
 struct ContactListViewStateModel {
     
-    var frequentsReciver: [ContactViewStateModel]
+    var frequentsReceiver: [ContactViewStateModel]
     var mamoAccounts: [ContactViewStateModel]
     var contacts: [ContactViewStateModel]
     
-    mutating func convertContactPresentationToViewStateModel(presentationModel: ContactListPresentationModel) {
-        frequentsReciver = presentationModel.frequentRecivers.map({ frequentPresentation in
+    mutating func convertContactPresentationToViewStateModel(presentationModel: ContactListModel) {
+        frequentsReceiver = presentationModel.frequentReceivers.map({ frequentPresentation in
             ContactViewStateModel(id: frequentPresentation.id,
                                   key: frequentPresentation.key, value: frequentPresentation.value,
                                   name: frequentPresentation.publicName,
-                                  isMamoAccount: frequentPresentation.isMamoAccount, isFrequet: true,
+                                  isMamoAccount: frequentPresentation.isMamoAccount, isFrequent: true,
                                   image: frequentPresentation.dataImage != nil ? UIImage(data: frequentPresentation.dataImage!) : nil)
         })
         
@@ -25,17 +25,23 @@ struct ContactListViewStateModel {
             ContactViewStateModel(id: mamoPresentation.id, key: mamoPresentation.key,
                                   value: mamoPresentation.value,
                                   name: mamoPresentation.publicName,
-                                  isMamoAccount: mamoPresentation.isMamoAccount, isFrequet: false,
+                                  isMamoAccount: mamoPresentation.isMamoAccount, isFrequent: false,
                                   image: mamoPresentation.dataImage != nil ? UIImage(data: mamoPresentation.dataImage!) : nil)
         })
         
-        contacts = presentationModel.contacts.map({ contactPresentation in
-            ContactViewStateModel(id: contactPresentation.id, key: contactPresentation.key, value: contactPresentation.value, name: contactPresentation.publicName, isMamoAccount: contactPresentation.isMamoAccount, isFrequet: false, image: contactPresentation.dataImage != nil ? UIImage(data: contactPresentation.dataImage!) : nil)
+        contacts = presentationModel.deviceContacts.map({ contactPresentation in
+            ContactViewStateModel(id: contactPresentation.id,
+                                  key: contactPresentation.key,
+                                  value: contactPresentation.value,
+                                  name: contactPresentation.publicName,
+                                  isMamoAccount: contactPresentation.isMamoAccount,
+                                  isFrequent: false,
+                                  image: contactPresentation.dataImage != nil ? UIImage(data: contactPresentation.dataImage!) : nil)
         })
     }
     
     mutating func getContactMatched(contact: ContactViewStateModel) {
-        let frequents: [ContactViewStateModel] = frequentsReciver.map { frequent in
+        let frequents: [ContactViewStateModel] = frequentsReceiver.map { frequent in
             var frequent = frequent
             if frequent.id == contact.id {
                 frequent.isSelected = true
@@ -44,7 +50,7 @@ struct ContactListViewStateModel {
             }
             return frequent
         }
-        frequentsReciver = frequents
+        frequentsReceiver = frequents
         
         
         let mamo: [ContactViewStateModel] = mamoAccounts.map { account in

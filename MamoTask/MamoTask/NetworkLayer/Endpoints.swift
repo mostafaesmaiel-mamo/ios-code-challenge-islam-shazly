@@ -7,29 +7,27 @@ import Foundation
 import Moya
 
 // MARK: - Endpoints Enum
-
-public enum Endpoints {
+enum Endpoints {
+    
     case frequentReceivers
     case searchAccounts(emails: [String], phones: [String])
-
 }
 
 // MARK: - API
-
 extension Endpoints: TargetType {
     
-    public var baseURL: URL {
+    var baseURL: URL {
         
-        return URL(string: C.baseURL)!
+        return URL(string: Constant.baseURL)!
     }
     
-    public var path: String {
+    var path: String {
         switch self {
         case .frequentReceivers:
-            return C.frequentReceivers
+            return Constant.frequentReceivers
             
         case .searchAccounts:
-            return C.searchAccounts
+            return Constant.searchAccounts
             
         }
     }
@@ -45,7 +43,7 @@ extension Endpoints: TargetType {
             
         }
     }
-    public var method: Moya.Method {
+    var method: Moya.Method {
         switch self {
         case .frequentReceivers:
             return .get
@@ -55,19 +53,19 @@ extension Endpoints: TargetType {
         }
     }
 
-    public var parameterEncoding: ParameterEncoding {
-         if self.method == .post {
+    var parameterEncoding: ParameterEncoding {
+         if method == .post {
             return JSONEncoding.default
          } else {
             return URLEncoding.queryString
         }
     }
     
-    public var task: Task {
+    var task: Task {
         return .requestParameters(parameters: parameters!, encoding: parameterEncoding)
     }
     
-    public var headers: [String: String]? {
+    var headers: [String: String]? {
         
         return ["Content-Type": "application/json"]
     }

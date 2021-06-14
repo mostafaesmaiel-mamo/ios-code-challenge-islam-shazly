@@ -6,7 +6,7 @@
 
 import Foundation
 
-extension C {
+extension Constant {
     enum StoryBoard: String, StoryboardNameProtocol {
         case Contacts
         

@@ -2,7 +2,6 @@
 //  CollectionViewCell.swift
 //  Mamo
 //
-//  Created by islam Elshazly on 07/06/2021.
 //
 
 import UIKit

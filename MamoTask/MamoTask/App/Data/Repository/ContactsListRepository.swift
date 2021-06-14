@@ -6,34 +6,24 @@
 
 import Foundation
 
-protocol ContactsListRepository {
-    typealias FrequentReceiverHandler = APIResultHandler<FrequentListDTO>
-    typealias MamoAccountsHandler = APIResultHandler<MamoAccountListDTO>
-    
-    func fetchFrequentReceivers(completion: @escaping FrequentReceiverHandler)
-    func fetchSearch(emails:[String], phones: [String], completion: @escaping MamoAccountsHandler)
-}
 
-final class ContactsListRepositoryImplementation: ContactsListRepository {
+final class ContactsListRepository: ContactsListRepositorable {
     
     // MARK: - Properties
-    
     let apiClient: ApiClient
     
     // MARK: - Init
-    
     init(apiClient: ApiClient = ApiClientImplementation()) {
         self.apiClient = apiClient
     }
     
     // MARK: - API
-    
     func fetchFrequentReceivers(completion: @escaping FrequentReceiverHandler) {
-        self.apiClient.execute(request: .frequentReceivers) { result in
+        apiClient.execute(request: .frequentReceivers) { result in
             switch result {
             case let .success(response):
                 do {
-                    let frequent = try FrequentListDTO.decode(from: response)
+                    let frequent = try FrequentListModel.decode(from: response)
                     completion(.success(frequent))
                 } catch {
                     completion(.failure(error))
@@ -46,11 +36,11 @@ final class ContactsListRepositoryImplementation: ContactsListRepository {
     }
     
     func fetchSearch(emails: [String], phones: [String], completion: @escaping MamoAccountsHandler) {
-        self.apiClient.execute(request: .searchAccounts(emails: emails, phones: phones)) { result in
+        apiClient.execute(request: .searchAccounts(emails: emails, phones: phones)) { result in
             switch result {
             case let .success(response):
                 do {
-                    let accounts = try MamoAccountListDTO.decode(from: response)
+                    let accounts = try MamoAccountListModel.decode(from: response)
                     completion(.success(accounts))
                 } catch {
                     completion(.failure(error))

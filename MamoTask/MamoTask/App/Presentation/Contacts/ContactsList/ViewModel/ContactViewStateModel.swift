@@ -2,7 +2,6 @@
 //  ContactViewModel.swift
 //  Mamo
 //
-//  Created by islam Elshazly on 07/06/2021.
 //
 
 import UIKit
@@ -14,7 +13,7 @@ struct ContactViewStateModel {
     var value: String
     var name: String?
     var isMamoAccount: Bool
-    var isFrequet: Bool
+    var isFrequent: Bool
     var image: UIImage?
     var isSelected: Bool = false
     var prefixName: String? {

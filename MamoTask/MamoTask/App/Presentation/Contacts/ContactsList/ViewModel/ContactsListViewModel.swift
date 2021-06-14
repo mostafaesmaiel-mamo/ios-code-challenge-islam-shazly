@@ -8,39 +8,40 @@ import Foundation
 import Combine
 import SwiftyContacts
 
-protocol ContactsListViewModel {
-    var shouldShowPermssionButton: Published<Bool>.Publisher { get }
+protocol ContactsListViewModelType {
+    
+    var shouldShowPermissionButton: Published<Bool>.Publisher { get }
     var shouldShowContactsCollectionView: Published<Bool>.Publisher { get }
     var contactsListViewStateModel: PassthroughSubject<ContactListViewStateModel, Error> { get }
     var showContactDetails: PassthroughSubject<ContactViewStateModel, Error> { get }
     var contactSelected: PassthroughSubject<ContactViewStateModel, Error> { get }
     
-    func contactPickerLogic()
+    func pickContact()
     func headerViewModel(section: Int) -> HeaderViewStateModel
 }
 
-final class ContactsListViewModelImplmentation: ContactsListViewModel {
+final class ContactsListViewModel: ContactsListViewModelType {
     
-    var shouldShowPermssionButton: Published<Bool>.Publisher { $shouldShowPermssionButtonState }
+    var shouldShowPermissionButton: Published<Bool>.Publisher { $shouldShowPermissionButtonState }
     var shouldShowContactsCollectionView: Published<Bool>.Publisher { $shouldShowContactsCollectionViewState }
     var contactsListViewStateModel: PassthroughSubject<ContactListViewStateModel, Error>
     
     // MARK: - Properties
     
-    @Published private(set) var shouldShowPermssionButtonState: Bool = false
+    @Published private(set) var shouldShowPermissionButtonState: Bool = false
     @Published private(set) var shouldShowContactsCollectionViewState: Bool = false
-    @Published private var contactPermissionState = ContactPermissionState.none
+    @Published private var contactPermissionState = ContactPermission.none
     
     var showContactDetails: PassthroughSubject<ContactViewStateModel, Error>
     var contactSelected: PassthroughSubject<ContactViewStateModel, Error>
-    private var contactListViewStateModel: ContactListViewStateModel = ContactListViewStateModel(frequentsReciver: [],
+    private var contactListViewStateModel: ContactListViewStateModel = ContactListViewStateModel(frequentsReceiver: [],
                                                                                                  mamoAccounts: [],
                                                                                                  contacts: [])
     
     private var bindings = Set<AnyCancellable>()
-    private var interactor: ContactsListInteractor!
+    private var interactor: ContactListInteractable!
     
-    init(interactor: ContactsListInteractor) {
+    init(interactor: ContactListInteractable) {
         self.interactor = interactor
         showContactDetails = PassthroughSubject<ContactViewStateModel, Error>()
         contactSelected = PassthroughSubject<ContactViewStateModel, Error>()
@@ -58,8 +59,8 @@ final class ContactsListViewModelImplmentation: ContactsListViewModel {
             }.store(in: &bindings)
     }
     
-    func contactPickerLogic() {
-        interactor.contactPickerLogic()
+    func pickContact() {
+        interactor.authorize()
     }
     
     func headerViewModel(section: Int) -> HeaderViewStateModel {
@@ -81,7 +82,7 @@ final class ContactsListViewModelImplmentation: ContactsListViewModel {
     
     
     private func fetchContacts() {
-        interactor.contactsPresnetatoinLogic
+        interactor.contactListSubject
             .receive(on: RunLoop.main)
             .mapError({ [weak self] error -> Error in
                 self?.sendError(error: error)
@@ -91,23 +92,25 @@ final class ContactsListViewModelImplmentation: ContactsListViewModel {
             } receiveValue: { [weak self] contacts in
                 guard let self = self else { return }
                 
-                self.contactListViewStateModel = ContactListViewStateModel(frequentsReciver: [], mamoAccounts: [], contacts: [])
+                self.contactListViewStateModel = ContactListViewStateModel(frequentsReceiver: [],
+                                                                           mamoAccounts: [],
+                                                                           contacts: [])
                 self.contactListViewStateModel.convertContactPresentationToViewStateModel(presentationModel: contacts)
                 self.contactsListViewStateModel.send(self.contactListViewStateModel)
             }.store(in: &bindings)
     }
     
     private func authorizationStatus() {
-        interactor.contactPermissionLogic.sink { [weak self] contactPermissionState in
+        interactor.contactPermissionPublisher.sink { [weak self] contactPermissionState in
             guard let self = self else { return }
             
             if contactPermissionState == .authorized {
                 self.fetchContacts()
                 self.shouldShowContactsCollectionViewState = true
-                self.shouldShowPermssionButtonState = false
+                self.shouldShowPermissionButtonState = false
             } else {
                 self.shouldShowContactsCollectionViewState = false
-                self.shouldShowPermssionButtonState = true
+                self.shouldShowPermissionButtonState = true
             }
         }
         .store(in: &bindings)

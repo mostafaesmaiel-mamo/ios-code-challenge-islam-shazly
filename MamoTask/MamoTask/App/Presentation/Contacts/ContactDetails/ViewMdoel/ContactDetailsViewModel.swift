@@ -7,12 +7,12 @@
 import Foundation
 import Combine
 
-protocol ContactDetailsViewModel {
+protocol ContactDetailsViewModelType {
     
     var backToContactListState: PassthroughSubject<Void, Error> { get }
 }
 
-final class ContactDetailsViewModelImplmentation: ContactDetailsViewModel {
+final class ContactDetailsViewModel: ContactDetailsViewModelType {
     
     var backToContactListState = PassthroughSubject<Void, Error>()
 }

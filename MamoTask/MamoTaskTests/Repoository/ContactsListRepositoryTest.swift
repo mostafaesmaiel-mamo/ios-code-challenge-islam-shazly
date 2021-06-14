@@ -14,14 +14,14 @@ final class ContactsListRepositoryTest: XCTestCase {
     // MARK: - Properties
     
     var apiClient: APIClientMock!
-    private var repository: ContactsListRepository!
+    private var repository: ContactsListRepositoryMock!
     
     // MARK: - Life Cycle
     
     override func setUpWithError() throws {
         
         apiClient = APIClientMock()
-        repository = ContactsListRepositoryImplementation(apiClient: apiClient)
+        repository = ContactsListRepositoryMock(apiClient: apiClient)
     }
 
     override func tearDownWithError() throws {
@@ -61,5 +61,4 @@ final class ContactsListRepositoryTest: XCTestCase {
             }
         }
     }
-
 }

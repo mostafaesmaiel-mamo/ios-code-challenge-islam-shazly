@@ -11,10 +11,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     private let rootController = UINavigationController()
-    private lazy var appCoordinator: AppCoordinnator = {
-        return AppCoordinnator(router:
-                                RouterImplementation(rootController:
-                                                        rootController))
+    
+    private lazy var appCoordinator: AppCoordinator = {
+        return AppCoordinator(router: RouterImplementation(rootController: rootController))
     }()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

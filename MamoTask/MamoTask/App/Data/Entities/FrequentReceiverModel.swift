@@ -1,12 +1,12 @@
 //
-//  FrequentContactModel.swift
+//  FrequentReceiverModel.swift
 //  Mamo
 //
 //
 
 import Foundation
 
-struct FrequentReciverDTO: Codable {
+struct FrequentReceiverModel: Codable {
     
     var id: String
     var publicName: String

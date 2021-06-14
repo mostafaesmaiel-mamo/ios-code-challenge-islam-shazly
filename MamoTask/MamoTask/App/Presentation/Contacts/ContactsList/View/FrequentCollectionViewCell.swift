@@ -2,7 +2,6 @@
 //  FrequentCollectionViewCell.swift
 //  Mamo
 //
-//  Created by islam Elshazly on 08/06/2021.
 //
 
 import UIKit

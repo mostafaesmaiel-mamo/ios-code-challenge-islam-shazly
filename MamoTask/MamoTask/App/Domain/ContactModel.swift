@@ -2,12 +2,11 @@
 //  ContactPresentationModel.swift
 //  Mamo
 //
-//  Created by islam Elshazly on 09/06/2021.
 //
 
 import Foundation
 
-struct ContactPresentationModel {
+struct ContactModel {
  
     var id: String
     var key: String
