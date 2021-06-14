@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="gTV-IL-0wX" customClass="CollectionViewCell" customModule="MamoTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="478" height="185"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="478" height="185"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbF-6x-ywj">
+                        <rect key="frame" x="36" y="77.5" width="40" height="40"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NMV-3B-byz">
+                        <rect key="frame" x="36" y="77.5" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="oJs-6a-GFX"/>
+                            <constraint firstAttribute="width" constant="40" id="sHj-8h-UdF"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="momo" translatesAutoresizingMaskIntoConstraints="NO" id="30e-cy-2hJ">
+                        <rect key="frame" x="64" y="105.5" width="12" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="12" id="Ilc-f3-YR6"/>
+                            <constraint firstAttribute="height" constant="12" id="LBj-4j-ROw"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abia Masoh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFN-s1-CLG">
+                        <rect key="frame" x="96" y="90" width="66" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="oFN-s1-CLG" firstAttribute="leading" secondItem="NMV-3B-byz" secondAttribute="trailing" constant="20" id="4La-GS-ZaO"/>
+                <constraint firstItem="NbF-6x-ywj" firstAttribute="top" secondItem="NMV-3B-byz" secondAttribute="top" id="4ZZ-Xg-Hae"/>
+                <constraint firstItem="NMV-3B-byz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="36" id="7LU-rE-sho"/>
+                <constraint firstItem="NMV-3B-byz" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="8MM-cZ-n2d"/>
+                <constraint firstItem="NbF-6x-ywj" firstAttribute="trailing" secondItem="NMV-3B-byz" secondAttribute="trailing" id="OGP-1w-LWx"/>
+                <constraint firstItem="30e-cy-2hJ" firstAttribute="trailing" secondItem="NbF-6x-ywj" secondAttribute="trailing" id="R2U-pT-ADE"/>
+                <constraint firstItem="NbF-6x-ywj" firstAttribute="leading" secondItem="NMV-3B-byz" secondAttribute="leading" id="Vei-FT-UE6"/>
+                <constraint firstItem="oFN-s1-CLG" firstAttribute="centerY" secondItem="NbF-6x-ywj" secondAttribute="centerY" id="j5j-yL-Nwz"/>
+                <constraint firstItem="30e-cy-2hJ" firstAttribute="bottom" secondItem="NbF-6x-ywj" secondAttribute="bottom" id="nxP-Kg-IdB"/>
+                <constraint firstItem="NbF-6x-ywj" firstAttribute="bottom" secondItem="NMV-3B-byz" secondAttribute="bottom" id="ufS-V8-ZRo"/>
+            </constraints>
+            <size key="customSize" width="478" height="185"/>
+            <connections>
+                <outlet property="imageView" destination="NMV-3B-byz" id="h2B-fp-Qhv"/>
+                <outlet property="mamoIcon" destination="30e-cy-2hJ" id="Irg-Gw-pX6"/>
+                <outlet property="nameLabel" destination="oFN-s1-CLG" id="sK4-v4-Ccz"/>
+                <outlet property="prefixNameLabel" destination="NbF-6x-ywj" id="ef5-Rs-2Xl"/>
+            </connections>
+            <point key="canvasLocation" x="392.75362318840581" y="167.07589285714286"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="momo" width="12" height="12"/>
+    </resources>
+</document>
